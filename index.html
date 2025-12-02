@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flames Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/HDxDyWjt/Image.png">
     <style>
         body{
             background-image: linear-gradient(to right, #DCD0FF , #C9A0DC);
@@ -73,6 +73,14 @@
             
             
         }
+        
+
+        hr {
+            border: none;
+            height: 3px;
+
+            background-color: #FFB6C1;  
+        }
 
 
     </style>
@@ -96,10 +104,16 @@
         function flames_calc() {
             let name1 = document.getElementById("name1").value.toLowerCase().replace(/\s/g, '');
             let name2 = document.getElementById("name2").value.toLowerCase().replace(/\s/g, '');
+
             if (name1.length === 0 || name2.length === 0) {
                 document.getElementById("print_ans").innerHTML = "Enter both names😤";
                 return; // Stop the function execution
             }
+            let alphabetRegex = /^[a-z]+$/;
+            if (!alphabetRegex.test(name1) || !alphabetRegex.test(name2)) {
+                document.getElementById("print_ans").innerHTML = "The entered names must only contain alphabets 😒 ";
+                return;
+            }   
             if (name1===name2){
                 document.getElementById("print_ans").innerHTML="Please enter two different names👀"
                 return
@@ -141,8 +155,20 @@
         document.getElementById("print_ans").innerHTML=final_flames[index2];
             }
         }
+        const name1Input = document.getElementById("name1");
+        const name2Input = document.getElementById("name2");
+        const calculateButton = document.getElementById("cb");
+        function handleEnter(event) {
+            if (event.keyCode === 13) {
+            calculateButton.click();
+        }}
+        name1Input.addEventListener("keypress", handleEnter);
+        name2Input.addEventListener("keypress", handleEnter);
         </script>
 </body>
 </html>
+
+
+
 
 
