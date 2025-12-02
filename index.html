@@ -116,7 +116,9 @@
             let flames = [0, 1, 2, 3, 4, 5];
             let index=0;
             while (flames.length > 1) {
-                index=total%flames.length;
+                if (total>flames.length){
+                index=total%flames.length;}
+                else {index=total}
                 flames.splice(index-1,1);
                 let a=flames.slice(index-1)
                 let b=flames.slice(0,index-1)
